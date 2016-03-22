@@ -5,8 +5,8 @@ vim_config_version: 0967a07
 vim_vundle_version: 5f70ae6
 vim_config_path: /etc/vim-config
 
-zsh_config_version: 2d122c4
+zsh_config_version: 0f7ccc7
 zsh_config_path: /etc/zsh-config
 
 zsh_oh_my_zsh_path: /usr/share/oh-my-zsh
-zsh_oh_my_zsh_version: 135c3763c
+zsh_oh_my_zsh_version: 8ac1859
