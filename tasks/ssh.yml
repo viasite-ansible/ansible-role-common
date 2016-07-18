@@ -2,6 +2,7 @@
 # TODO: папку с ключами надо вынести из common в более общее место, возможно, в group_vars
 # папка лежит в /files всего дерева
 # TODO: убрать копипасту для двух юзеров
+# TODO: отдельные ключи для root
 
 - name: Add ssh public keys to root
   authorized_key:
