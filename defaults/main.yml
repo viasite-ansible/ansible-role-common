@@ -12,5 +12,3 @@ zsh_oh_my_zsh_path: /usr/share/oh-my-zsh
 zsh_oh_my_zsh_version: 96a2092
 
 fs_inotify_max_user_watches: 262144
-
-other_cronjobs: []
