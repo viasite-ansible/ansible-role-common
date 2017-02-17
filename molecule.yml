@@ -5,16 +5,10 @@ driver:
   name: docker
 docker:
   containers:
-    - name: common
+    - name: ansible-role-common
       image: ubuntu
       image_version: latest
       ansible_groups:
         - group1
 verifier:
   name: testinfra
-
-ansible:
-  group_vars:
-    all:
-      git_name: somebody
-      git_email: somebody@example.com
