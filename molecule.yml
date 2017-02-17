@@ -13,17 +13,6 @@ docker:
 verifier:
   name: testinfra
 
-molecule:
-  test:
-    sequence:
-      #- destroy
-      - dependency
-      - syntax
-      - create
-      #- converge
-      #- idempotence
-      - verify
-
 ansible:
   group_vars:
     all:
