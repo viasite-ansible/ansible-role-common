@@ -2,7 +2,6 @@
 - include: packages.yml
 - include: timezone.yml
 - include: ntp.yml
-- include: ssh.yml
 - include: vim.yml
 - include: users.yml
 - include: zsh.yml

@@ -1,0 +1,31 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+docker:
+  containers:
+    - name: common
+      image: ubuntu
+      image_version: latest
+      ansible_groups:
+        - group1
+verifier:
+  name: testinfra
+
+molecule:
+  test:
+    sequence:
+      #- destroy
+      - dependency
+      - syntax
+      - create
+      #- converge
+      #- idempotence
+      - verify
+
+ansible:
+  group_vars:
+    all:
+      git_name: somebody
+      git_email: somebody@example.com

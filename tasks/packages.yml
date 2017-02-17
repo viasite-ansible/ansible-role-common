@@ -10,13 +10,14 @@
   register: apt_cache
   tags: [ common, packages, upgrade ]
 
-- name: Update system packages
-  apt:  upgrade=yes
-  when: apt_cache.changed
-  tags: [ common, packages, upgrade ]
+# TODO: move to role upgrade
+#- name: Update system packages
+#  apt:  upgrade=yes
+#  when: apt_cache.changed
+#  tags: [ common, packages, upgrade ]
 
 - name: Install common packages
-  apt: name={{item}} state=latest
+  apt: name={{item}} state=present
   with_items:
     - apt-transport-https
     - aptitude
@@ -34,7 +35,7 @@
     - ncdu
     - nmap
     - openssh-server
-    - php5-cli
+    #- php5-cli
     - pv
     - python-setuptools
     - screen
@@ -50,19 +51,19 @@
   tags: [ common, packages ]
 
 - name: Install dev packages
-  apt: name={{item}} state=latest
+  apt: name={{item}} state=present
   with_items:
-    - build-essential
-    - g++
-    - ipython
+    #- build-essential
+    #- g++
+    #- ipython
     #- nodejs
     #- nodejs-dev
-    - php5-cli
+    #- php5-cli
     - python-dev
 
-    - libxml2-dev # for howdoi
-    - libxslt1-dev # for howdoi
-    - zlib1g-dev # for howdoi
+    #- libxml2-dev # for howdoi
+    #- libxslt1-dev # for howdoi
+    #- zlib1g-dev # for howdoi
 
     #- tig
     #- tmux
@@ -73,11 +74,11 @@
   tags: [ common, packages ]
 
 - name: Install pip packages
-  pip: name={{ item }} state=latest
+  pip: name={{ item }} state=present
   with_items:
     #- fpp # https://github.com/facebook/PathPicker
     - glances # https://github.com/nicolargo/glances
-    - howdoi # requires libxml2-dev libxslt-dev packages
+    #- howdoi # requires libxml2-dev libxslt-dev packages
     - httpie # https://github.com/jkbrzt/httpie
     - mycli # https://github.com/dbcli/mycli
     - percol # https://github.com/mooz/percol

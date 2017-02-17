@@ -1,5 +1,12 @@
 ---
 ntp_config_server: [ '0.pool.ntp.org', '1.pool.ntp.org', '2.pool.ntp.org', '3.pool.ntp.org' ]
+timezone: 'Asia/Yekaterinburg'
+username: '{{ (ansible_ssh_user
+               if ansible_ssh_user | d()
+               else lookup("env", "USER")) }}'
+
+# git_name: '' # required
+# git_email: '' # required
 
 vim_config_version: 292e0a5
 vim_vundle_version: 4984767
