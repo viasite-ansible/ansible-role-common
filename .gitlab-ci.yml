@@ -1,0 +1,13 @@
+---
+
+image: docker:latest
+
+test:
+  script:
+  # this configures Django application to use attached postgres database that is run on `postgres` host
+  - export DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
+  - apt-get update -qy
+  - apt-get install -y python-dev python-pip
+  - pip install molecule docker-py
+  - molecule --debug test
+  - docker run my-docker-image /script/to/run/tests
