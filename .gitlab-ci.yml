@@ -1,6 +1,6 @@
 ---
 
-image: docker:latest
+image: popstas/ubuntu-molecule:latest
 
 test:
   script:
