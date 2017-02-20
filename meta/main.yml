@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Stanislav Popov
+  company: Viasite
+  description: Install common packages and make other things
+  license: MIT
+  min_ansible_version: 1.8
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+  categories:
+    - system
+dependencies: []
