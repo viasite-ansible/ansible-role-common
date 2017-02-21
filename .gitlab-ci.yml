@@ -1,6 +1,6 @@
 ---
 
-image: popstas/ubuntu-molecule:latest
+#image: popstas/ubuntu-molecule:latest
 
 test:
   script:
