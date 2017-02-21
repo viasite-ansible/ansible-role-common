@@ -1,6 +1,6 @@
 ---
 - name: Ensure aptitude installed
-  apt: 
+  apt:
     name: aptitude
     state: present
   tags: [ common, packages ]

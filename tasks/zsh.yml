@@ -72,7 +72,7 @@
   tags: [ common, zsh ]
 
 - name: symlink zshrc for root
-  file: 
+  file:
     path: /root/.zshrc
     src: "{{ zsh_config_path }}/.zshrc"
     state: link

@@ -3,7 +3,7 @@
 
 - name: Ensure vim present
   apt:
-    name: vim 
+    name: vim
     state: present
 
 - name: Clone vim-config
@@ -58,7 +58,7 @@
   file:
     path: "/home/{{ username }}/.vimrc"
     src: "{{ vim_config_path }}/.vimrc"
-    state: link 
+    state: link
     owner: "{{ username }}"
   when: username != "root"
   tags: [ common, vim ]

@@ -1,7 +1,7 @@
 ---
 # TODO: smarter tasks
 - name: Git config user
-  template: 
+  template:
     src: gitconfig.j2
     dest: "/home/{{ username }}/.gitconfig"
   when: username != "root"
