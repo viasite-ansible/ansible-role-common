@@ -1,23 +1,27 @@
 ---
 - name: Ensure aptitude installed
-  apt: name=aptitude state=present
+  apt: 
+    name: aptitude
+    state: present
   tags: [ common, packages ]
 
 - name: Update apt cache
   apt:
-        update_cache=yes
-        cache_valid_time=3600
+    update_cache: yes
+    cache_valid_time: 3600
   register: apt_cache
   tags: [ common, packages, upgrade ]
 
 # TODO: move to role upgrade
 #- name: Update system packages
-#  apt:  upgrade=yes
+#  apt:  upgrade: yes
 #  when: apt_cache.changed
 #  tags: [ common, packages, upgrade ]
 
 - name: Install common packages
-  apt: name={{item}} state=present
+  apt:
+    name: "{{item}}"
+    state: present
   with_items:
     - apt-transport-https
     - aptitude
@@ -51,7 +55,9 @@
   tags: [ common, packages ]
 
 - name: Install dev packages
-  apt: name={{item}} state=present
+  apt:
+    name: "{{item}}"
+    state: present
   with_items:
     #- build-essential
     - g++
@@ -60,6 +66,7 @@
     #- nodejs-dev
     #- php5-cli
     - python-dev
+    - python-pip
 
     #- libxml2-dev # for howdoi
     #- libxslt1-dev # for howdoi
@@ -69,12 +76,14 @@
     #- tmux
   tags: [ common, packages ]
 
-- name: Install easy_install pip
-  easy_install: name=pip
-  tags: [ common, packages ]
+#- name: Install easy_install pip
+#  easy_install: name: pip
+#  tags: [ common, packages ]
 
 - name: Install pip packages
-  pip: name={{ item }} state=present
+  pip:
+    name: "{{ item }}"
+    state: present
   with_items:
     #- fpp # https://github.com/facebook/PathPicker
     - glances # https://github.com/nicolargo/glances
