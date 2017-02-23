@@ -5,7 +5,6 @@
 - install pip
 - git config
 - vim config
-- zsh config
 - ntp
 - timezone
 - sysctl

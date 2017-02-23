@@ -51,7 +51,6 @@
     - vim-gtk # invludes more compiled modules, + 28 mb
     - vnstat
     - whois
-    - zsh
   tags: [ common, packages ]
 
 - name: Install dev packages
@@ -76,10 +75,6 @@
     #- tmux
   tags: [ common, packages ]
 
-#- name: Install easy_install pip
-#  easy_install: name: pip
-#  tags: [ common, packages ]
-
 - name: Install pip packages
   pip:
     name: "{{ item }}"
@@ -87,11 +82,9 @@
   with_items:
     #- fpp # https://github.com/facebook/PathPicker
     - glances # https://github.com/nicolargo/glances
-    #- howdoi # requires libxml2-dev libxslt-dev packages
     - httpie # https://github.com/jkbrzt/httpie
     - mycli # https://github.com/dbcli/mycli
-    - percol # https://github.com/mooz/percol
-    - powerline-status
     - ps_mem # https://github.com/pixelb/ps_mem
+    #- howdoi # requires libxml2-dev libxslt-dev packages
     #- watchdog # watchmedo, https://github.com/gorakhargosh/watchdog
   tags: [ common, packages ]
