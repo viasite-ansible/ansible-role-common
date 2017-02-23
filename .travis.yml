@@ -8,3 +8,6 @@ services:
 
 install: pip install molecule docker-py
 script: molecule --debug test
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
