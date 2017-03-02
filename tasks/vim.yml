@@ -8,7 +8,7 @@
 
 - name: Clone vim-config
   git:
-    repo: https://github.com/popstas/vim-config.git
+    repo: https://github.com/viasite/vim-config.git
     dest: "{{ vim_config_path }}"
     version: "{{ vim_config_version }}"
   tags: [ common, vim ]
