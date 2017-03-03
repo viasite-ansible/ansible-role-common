@@ -1,4 +1,5 @@
 ---
+# need for pass 'Install common packages'
 - name: Ensure aptitude installed
   apt:
     name: aptitude
@@ -8,71 +9,34 @@
 - name: Update apt cache
   apt:
     update_cache: yes
-    cache_valid_time: 3600
+    cache_valid_time: 86400
   register: apt_cache
   tags: [ common, packages, upgrade ]
 
-# TODO: move to role upgrade
-#- name: Update system packages
-#  apt:  upgrade: yes
-#  when: apt_cache.changed
-#  tags: [ common, packages, upgrade ]
-
 - name: Install common packages
   apt:
-    name: "{{item}}"
+    name: "{{ item }}"
     state: present
   with_items:
-    - apt-transport-https
-    - aptitude
-    - curl
-    - git
-    - grc
-    - htop
-    - idn
-    - imagemagick
-    - iotop
-    - less
-    - lnav
-    - mc
-    - mtr
-    - ncdu
-    - nmap
-    - openssh-server
-    #- php5-cli
-    - pv
-    - screen
-    - sshfs
-    - traceroute
-    - tree
-    - tmux
-    - unzip
-    - vim-gtk # invludes more compiled modules, + 28 mb
-    - vnstat
-    - whois
+    - "{{ common_packages }}"
   tags: [ common, packages ]
 
 - name: Install dev packages
   apt:
-    name: "{{item}}"
+    name: "{{ item }}"
     state: present
   with_items:
-    #- build-essential
-    - g++
-    #- ipython
-    #- nodejs
-    #- nodejs-dev
-    #- php5-cli
-    - python-dev
-    - python-pip
-    - python-setuptools
+    - "{{ common_packages_dev }}"
+  tags: [ common, packages ]
 
-    #- libxml2-dev # for howdoi
-    #- libxslt1-dev # for howdoi
-    #- zlib1g-dev # for howdoi
-
-    #- tig
-    #- tmux
+# https://github.com/nicolargo/glances/issues/1033#issuecomment-279319763
+- name: Upgrade pip and setuptools
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - pip
+    - setuptools
   tags: [ common, packages ]
 
 - name: Install pip packages
@@ -80,11 +44,5 @@
     name: "{{ item }}"
     state: present
   with_items:
-    #- fpp # https://github.com/facebook/PathPicker
-    - glances # https://github.com/nicolargo/glances
-    - httpie # https://github.com/jkbrzt/httpie
-    - mycli # https://github.com/dbcli/mycli
-    - ps_mem # https://github.com/pixelb/ps_mem
-    #- howdoi # requires libxml2-dev libxslt-dev packages
-    #- watchdog # watchmedo, https://github.com/gorakhargosh/watchdog
+    - "{{ common_packages_pip }}"
   tags: [ common, packages ]

@@ -1,12 +1,59 @@
 ---
 ntp_config_server: [ '0.pool.ntp.org', '1.pool.ntp.org', '2.pool.ntp.org', '3.pool.ntp.org' ]
-common__timezone: 'Asia/Yekaterinburg'
+common_timezone: 'Asia/Yekaterinburg'
 username: '{{ (ansible_ssh_user
                if ansible_ssh_user | d()
                else lookup("env", "USER")) }}'
 
-# git_name: '' # required
-# git_email: '' # required
+common_packages:
+  - apt-transport-https
+  - curl
+  - git
+  - grc
+  - htop
+  - idn
+  - imagemagick
+  - iotop
+  - less
+  - lnav
+  - mc
+  - mtr
+  - ncdu
+  - nmap
+  - openssh-server
+  - pv
+  - screen
+  - sshfs
+  #- tig
+  - traceroute
+  - tree
+  - tmux
+  - unzip
+  - vim-gtk # invludes more compiled modules, + 28 mb
+  - vnstat
+  - whois
+
+common_packages_dev:
+  #- build-essential
+  - g++
+  #- ipython
+  #- nodejs
+  #- nodejs-dev
+  - python-dev
+  - python-pip
+  - python-setuptools
+  #- libxml2-dev # for howdoi
+  #- libxslt1-dev # for howdoi
+  #- zlib1g-dev # for howdoi
+
+common_packages_pip:
+  #- fpp # https://github.com/facebook/PathPicker
+  - glances # https://github.com/nicolargo/glances
+  - httpie # https://github.com/jkbrzt/httpie
+  - mycli # https://github.com/dbcli/mycli
+  - ps_mem # https://github.com/pixelb/ps_mem
+  #- howdoi # requires libxml2-dev libxslt-dev packages
+  #- watchdog # watchmedo, https://github.com/gorakhargosh/watchdog
 
 vim_config_version: 292e0a5
 vim_vundle_version: 88688fe

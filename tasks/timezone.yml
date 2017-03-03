@@ -6,16 +6,16 @@
     name: 'tzdata'
     question: 'tzdata/Areas'
     vtype: 'select'
-    value: '{{ common__timezone.split("/")[0] }}'
+    value: '{{ common_timezone.split("/")[0] }}'
   register: ntp__register_debconf_set_area
   tags: [ timezone ]
 
 - name: Configure tzdata zone in debconf
   debconf:
     name: 'tzdata'
-    question: 'tzdata/Zones/{{ common__timezone.split("/")[0] }}'
+    question: 'tzdata/Zones/{{ common_timezone.split("/")[0] }}'
     vtype: 'select'
-    value: '{{ common__timezone.split("/")[1] }}'
+    value: '{{ common_timezone.split("/")[1] }}'
   register: ntp__register_debconf_set_zone
   tags: [ timezone ]
 
@@ -40,20 +40,20 @@
 - name: Symlink correct timezone as /etc/localtime
   file:
     path: '/etc/localtime'
-    src: '/usr/share/zoneinfo/{{ common__timezone }}'
+    src: '/usr/share/zoneinfo/{{ common_timezone }}'
     state: 'link'
   when: (ntp__register_etc_timezone|changed and
          ntp__register_etc_localtime.stat.islnk|bool)
   tags: [ timezone, skip_ansible_lint ]
 
 - name: Configure timezone with timedatectl
-  shell: 'timedatectl set-timezone {{ common__timezone }}'
+  shell: 'timedatectl set-timezone {{ common_timezone }}'
   when: ((ansible_local|d() and ansible_local.init|d() and
                 ansible_local.init == "systemd") and
             ntp__daemon == 'systemd-timesyncd') and
         (ansible_local is undefined or
             (ansible_local|d() and ansible_local.timezone|d() and
-                common__timezone != ansible_local.timezone) or
+                common_timezone != ansible_local.timezone) or
             (ntp__register_etc_timezone|d() and ntp__register_etc_timezone|changed))
   tags: [ timezone, skip_ansible_lint ]
 
