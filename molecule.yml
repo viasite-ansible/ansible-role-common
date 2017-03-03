@@ -6,9 +6,18 @@ driver:
   name: docker
 docker:
   containers:
-    - name: ansible-role-common
+    - name: ansible-role-common-1404
       image: ubuntu
-      image_version: latest
+      image_version: 14.04
+      volume_mounts:
+        - ${MOLECULE_APTPROXY_PATH}:/etc/apt/apt.conf.d/00aptproxy
+      ansible_groups:
+        - group1
+    - name: ansible-role-common-1604
+      image: ubuntu
+      image_version: 16.04
+      volume_mounts:
+        - ${MOLECULE_APTPROXY_PATH}:/etc/apt/apt.conf.d/00aptproxy
       ansible_groups:
         - group1
 
@@ -40,7 +49,3 @@ verifier:
 
 ansible:
   playbook: tests/playbook.yml
-  group_vars:
-    all:
-      git_name: somebody
-      git_email: somebody@example.com

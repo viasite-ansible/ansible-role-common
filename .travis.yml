@@ -7,7 +7,9 @@ services:
   - docker
 
 install: pip install molecule docker-py
-script: molecule --debug test
+script:
+  - export MOLECULE_APTPROXY_PATH="$PWD/00aptproxy" && touch "$MOLECULE_APTPROXY_PATH"
+  - molecule --debug test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

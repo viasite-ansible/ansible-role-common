@@ -4,4 +4,3 @@
 - include: ntp.yml
 - include: vim.yml
 - include: users.yml
-- include: git.yml

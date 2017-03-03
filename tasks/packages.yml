@@ -41,7 +41,6 @@
     - openssh-server
     #- php5-cli
     - pv
-    - python-setuptools
     - screen
     - sshfs
     - traceroute
@@ -66,6 +65,7 @@
     #- php5-cli
     - python-dev
     - python-pip
+    - python-setuptools
 
     #- libxml2-dev # for howdoi
     #- libxslt1-dev # for howdoi

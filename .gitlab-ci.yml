@@ -1,7 +1,4 @@
 ---
-
-#image: popstas/ubuntu-molecule:latest
-
 test:
   script:
     - molecule --debug test
