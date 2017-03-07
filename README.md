@@ -1,16 +1,13 @@
 [![Build Status](https://travis-ci.org/viasite-ansible/ansible-role-common.svg?branch=master)](https://travis-ci.org/viasite-ansible/ansible-role-common)
 
+This role should be decoupled to separate roles.
+
 ## Includes:
 - install base packages
 - install pip
-- git config
-- vim config
 - ntp
 - timezone
+- vim config
 - sysctl
 
-## Required variables:
-- git_name
-- git_email
-
-Other variables in defaults/main.yml
+See variables in defaults/main.yml

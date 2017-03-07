@@ -1,7 +1,4 @@
 ---
-dependency:
-  name: galaxy
-
 driver:
   name: docker
 docker:
@@ -43,9 +40,6 @@ docker:
 #        - network_name: private_network
 #          type: dhcp
 #          auto_config: true
-
-verifier:
-  name: testinfra
 
 ansible:
   playbook: tests/playbook.yml
