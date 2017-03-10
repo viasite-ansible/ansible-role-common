@@ -1,6 +1,11 @@
 ---
 - include: packages.yml
+  tags: [ common, install, packages ]
 - include: timezone.yml
+  tags: [ common, configure, timezone ]
 - include: ntp.yml
+  tags: [ common, ntp ]
 - include: vim.yml
+  tags: [ common, vim ]
 - include: users.yml
+  tags: [ common, users ]

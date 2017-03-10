@@ -4,7 +4,6 @@
   apt:
     name: aptitude
     state: present
-  tags: [ common, packages ]
 
 - name: Update apt cache
   apt:
@@ -19,7 +18,6 @@
     state: present
   with_items:
     - "{{ common_packages }}"
-  tags: [ common, packages ]
 
 - name: Install dev packages
   apt:
@@ -27,7 +25,6 @@
     state: present
   with_items:
     - "{{ common_packages_dev }}"
-  tags: [ common, packages ]
 
 # https://github.com/nicolargo/glances/issues/1033#issuecomment-279319763
 - name: Upgrade pip and setuptools
@@ -37,7 +34,7 @@
   with_items:
     - pip
     - setuptools
-  tags: [ common, packages ]
+  tags: skip_ansible_lint
 
 - name: Install pip packages
   pip:
@@ -45,4 +42,3 @@
     state: present
   with_items:
     - "{{ common_packages_pip }}"
-  tags: [ common, packages ]

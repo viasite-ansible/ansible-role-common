@@ -8,4 +8,3 @@
     - /etc/skel/.bash_logout
     - /etc/skel/.bashrc
     - /etc/skel/.profile
-  tags: [ common, users ]

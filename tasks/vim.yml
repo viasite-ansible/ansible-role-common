@@ -11,48 +11,41 @@
     repo: https://github.com/viasite/vim-config.git
     dest: "{{ vim_config_path }}"
     version: "{{ vim_config_version }}"
-  tags: [ common, vim ]
 
 - name: Symlink vimrc for all
   file:
     path: /etc/skel/.vimrc
     src: "{{ vim_config_path }}/.vimrc"
     state: link
-  tags: [ common, vim ]
 
 - name: Create .vim data directory
   file:
     path: "{{ vim_config_path }}/.vim"
     state: directory
-  tags: [ common, vim ]
 
 - name: Symlink .vim for all
   file:
     path: /etc/skel/.vim
     src: "{{ vim_config_path }}/.vim"
     state: link
-  tags: [ common, vim ]
 
 - name: Clone vundle
   git:
     repo: https://github.com/VundleVim/Vundle.vim.git
     dest: "{{ vim_config_path }}/.vim/bundle/Vundle.vim"
     version: "{{ vim_vundle_version }}"
-  tags: [ common, vim ]
 
 - name: Check vimrc
   stat:
     path: "/home/{{ username }}/.vimrc"
   register: st
   when: username != "root"
-  tags: [ common, vim ]
 
 - name: remove standard vimrc if it is not link
   file:
     path: "/home/{{ username }}/.vimrc"
     state: absent
   when: username != "root" and st.stat.exists and not st.stat.islnk
-  tags: [ common, vim ]
 
 - name: symlink vimrc
   file:
@@ -61,28 +54,24 @@
     state: link
     owner: "{{ username }}"
   when: username != "root"
-  tags: [ common, vim ]
 
 
 - name: Check vimrc for root
   stat:
     path: /root/.vimrc
   register: st
-  tags: [ common, vim ]
 
 - name: remove standard vimrc for root if it is not link
   file:
     path: /root/.vimrc
     state: absent
   when: st.stat.exists and not st.stat.islnk
-  tags: [ common, vim ]
 
 - name: Symlink .vim for root
   file:
     path: /root/.vim
     src: "{{ vim_config_path }}/.vim"
     state: link
-  tags: [ common, vim ]
 
 - name: symlink vimrc for root
   file:
@@ -90,4 +79,3 @@
     src: "{{ vim_config_path }}/.vimrc"
     state: link
     owner: root
-  tags: [ common, vim ]

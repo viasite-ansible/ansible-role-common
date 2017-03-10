@@ -44,8 +44,5 @@ docker:
 #          type: dhcp
 #          auto_config: true
 
-verifier:
-  name: testinfra
-
 ansible:
   playbook: tests/playbook.yml

@@ -8,7 +8,6 @@
     vtype: 'select'
     value: '{{ common_timezone.split("/")[0] }}'
   register: ntp__register_debconf_set_area
-  tags: [ timezone ]
 
 - name: Configure tzdata zone in debconf
   debconf:
@@ -17,7 +16,6 @@
     vtype: 'select'
     value: '{{ common_timezone.split("/")[1] }}'
   register: ntp__register_debconf_set_zone
-  tags: [ timezone ]
 
   # tzdata ignores debconf answers when configured non-interactively
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=704089
@@ -29,13 +27,11 @@
     group: 'root'
     mode: '0644'
   register: ntp__register_etc_timezone
-  tags: [ timezone ]
 
 - name: Check if /etc/localtime is a symlink
   stat:
     path: '/etc/localtime'
   register: ntp__register_etc_localtime
-  tags: [ timezone ]
 
 - name: Symlink correct timezone as /etc/localtime
   file:
@@ -44,7 +40,7 @@
     state: 'link'
   when: (ntp__register_etc_timezone|changed and
          ntp__register_etc_localtime.stat.islnk|bool)
-  tags: [ timezone, skip_ansible_lint ]
+  tags: skip_ansible_lint
 
 - name: Configure timezone with timedatectl
   shell: 'timedatectl set-timezone {{ common_timezone }}'
@@ -55,11 +51,11 @@
             (ansible_local|d() and ansible_local.timezone|d() and
                 common_timezone != ansible_local.timezone) or
             (ntp__register_etc_timezone|d() and ntp__register_etc_timezone|changed))
-  tags: [ timezone, skip_ansible_lint ]
+  tags: skip_ansible_lint
 
 - name: Reconfigure tzdata
   shell: dpkg-reconfigure --frontend noninteractive tzdata
   when: ((ntp__register_debconf_set_area|d() and ntp__register_debconf_set_area|changed) or
          (ntp__register_debconf_set_zone|d() and ntp__register_debconf_set_zone|changed) or
          (ntp__register_etc_timezone|d() and ntp__register_etc_timezone|changed))
-  tags: [ timezone, skip_ansible_lint ]
+  tags: skip_ansible_lint
