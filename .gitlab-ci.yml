@@ -1,4 +1,4 @@
 ---
 test:
   script:
-    - molecule --debug test
+    - molecule test

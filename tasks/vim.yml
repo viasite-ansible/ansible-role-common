@@ -37,23 +37,23 @@
 
 - name: Check vimrc
   stat:
-    path: "/home/{{ username }}/.vimrc"
+    path: "/home/{{ vim_username }}/.vimrc"
   register: st
-  when: username != "root"
+  when: vim_username != "root"
 
 - name: remove standard vimrc if it is not link
   file:
-    path: "/home/{{ username }}/.vimrc"
+    path: "/home/{{ vim_username }}/.vimrc"
     state: absent
-  when: username != "root" and st.stat.exists and not st.stat.islnk
+  when: vim_username != "root" and st.stat.exists and not st.stat.islnk
 
 - name: symlink vimrc
   file:
-    path: "/home/{{ username }}/.vimrc"
+    path: "/home/{{ vim_username }}/.vimrc"
     src: "{{ vim_config_path }}/.vimrc"
     state: link
-    owner: "{{ username }}"
-  when: username != "root"
+    owner: "{{ vim_username }}"
+  when: vim_username != "root"
 
 
 - name: Check vimrc for root

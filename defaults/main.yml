@@ -1,10 +1,6 @@
 ---
 ntp_config_server: [ '0.pool.ntp.org', '1.pool.ntp.org', '2.pool.ntp.org', '3.pool.ntp.org' ]
 common_timezone: 'Asia/Yekaterinburg'
-username: '{{ (ansible_ssh_user
-               if ansible_ssh_user | d()
-               else lookup("env", "USER")) }}'
-
 common_packages:
   - apt-transport-https
   - curl
@@ -55,6 +51,9 @@ common_packages_pip:
   #- howdoi # requires libxml2-dev libxslt-dev packages
   #- watchdog # watchmedo, https://github.com/gorakhargosh/watchdog
 
+vim_username: '{{ (ansible_ssh_user
+                 if ansible_ssh_user | d()
+                 else lookup("env", "USER")) }}'
 vim_config_version: 292e0a5
 vim_vundle_version: 88688fe
 vim_config_path: /etc/vim-config
