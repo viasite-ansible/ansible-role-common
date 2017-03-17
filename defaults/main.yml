@@ -25,7 +25,6 @@ common_packages:
   - tree
   - tmux
   - unzip
-  - vim-gtk # invludes more compiled modules, + 28 mb
   - vnstat
   - whois
 
@@ -50,12 +49,5 @@ common_packages_pip:
   - ps_mem # https://github.com/pixelb/ps_mem
   #- howdoi # requires libxml2-dev libxslt-dev packages
   #- watchdog # watchmedo, https://github.com/gorakhargosh/watchdog
-
-vim_username: '{{ (ansible_ssh_user
-                 if ansible_ssh_user | d()
-                 else lookup("env", "USER")) }}'
-vim_config_version: 292e0a5
-vim_vundle_version: 88688fe
-vim_config_path: /etc/vim-config
 
 fs_inotify_max_user_watches: 262144

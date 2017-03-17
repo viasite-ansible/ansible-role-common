@@ -5,7 +5,5 @@
   tags: [ common, configure, timezone ]
 - include: ntp.yml
   tags: [ common, ntp ]
-- include: vim.yml
-  tags: [ common, vim ]
 - include: users.yml
   tags: [ common, users ]

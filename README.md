@@ -7,7 +7,6 @@ This role should be decoupled to separate roles.
 - install pip
 - ntp
 - timezone
-- vim config
 - sysctl
 
 See variables in defaults/main.yml
