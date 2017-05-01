@@ -19,6 +19,7 @@ common_packages:
   - openssh-server
   - pv
   - screen
+  - silversearcher-ag
   - sshfs
   #- tig
   - traceroute
