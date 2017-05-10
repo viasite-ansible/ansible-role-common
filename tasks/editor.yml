@@ -1,0 +1,11 @@
+---
+- name: Detect editor path
+  command: "which {{ common_default_editor }}"
+  changed_when: false
+  register: common_register_editor_path
+
+- name: Set default editor
+  alternatives:
+    name: editor
+    path: "{{ common_register_editor_path.stdout }}"
+  when: common_register_editor_path.rc == 0

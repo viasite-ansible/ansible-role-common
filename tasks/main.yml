@@ -1,6 +1,8 @@
 ---
 - include: packages.yml
   tags: [ common, install, packages ]
+- include: editor.yml
+  tags: [ common, editor ]
 - include: timezone.yml
   tags: [ common, configure, timezone ]
 - include: ntp.yml
