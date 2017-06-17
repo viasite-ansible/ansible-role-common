@@ -1,7 +1,7 @@
 ---
 ntp_config_server: [ '0.pool.ntp.org', '1.pool.ntp.org', '2.pool.ntp.org', '3.pool.ntp.org' ]
 common_timezone: 'Asia/Yekaterinburg'
-common_default_editor: vim
+common_default_editor: mcedit
 common_packages:
   - apt-transport-https
   - curl
