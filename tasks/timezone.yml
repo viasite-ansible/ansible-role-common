@@ -1,6 +1,11 @@
 ---
 # from https://github.com/debops/ansible-ntp/blob/master/tasks/timezone.yml
 
+- name: Install tzdata
+  apt:
+    name: tzdata
+    state: installed
+
 - name: Configure tzdata area in debconf
   debconf:
     name: 'tzdata'
