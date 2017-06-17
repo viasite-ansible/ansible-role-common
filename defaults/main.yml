@@ -19,6 +19,7 @@ common_packages:
   - nmap
   - openssh-server
   - pv
+  - reptyr
   - screen
   - silversearcher-ag
   - sshfs
