@@ -22,6 +22,7 @@ common_packages:
   - reptyr
   - screen
   - silversearcher-ag
+  - software-properties-common
   - sshfs
   #- tig
   - traceroute
