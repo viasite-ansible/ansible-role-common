@@ -1,6 +1,8 @@
 ---
 - include: packages.yml
   tags: [ common, install, packages ]
+- include: micro.yml
+  tags: [ common, install, packages, micro ]
 - include: editor.yml
   tags: [ common, editor ]
 - include: timezone.yml

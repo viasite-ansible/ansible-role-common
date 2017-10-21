@@ -1,0 +1,26 @@
+---
+- name: Check for micro exists
+  stat: "path=/usr/local/bin/micro"
+  register: common_micro_stat
+  ignore_errors: True
+
+- name: Download zyedidia/micro archive
+  unarchive:
+    remote_src: yes
+    src: "https://github.com/zyedidia/micro/releases/download/v{{ common_micro_version }}/micro-{{ common_micro_version }}-linux64.tar.gz"
+    dest: /tmp
+    creates: "/tmp/micro-{{ common_micro_version }}"
+  when: not common_micro_stat.stat.exists
+
+- name: Copy micro to /usr/local/bin
+  copy:
+    src: "/tmp/micro-{{ common_micro_version }}/micro"
+    dest: /usr/local/bin/micro
+    mode: 0755
+  when: not common_micro_stat.stat.exists
+
+- name: Create alias m
+  file:
+    src: /usr/local/bin/micro
+    dest: /usr/local/bin/m
+    state: link
