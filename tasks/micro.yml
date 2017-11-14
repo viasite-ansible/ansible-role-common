@@ -7,7 +7,7 @@
 - name: Download zyedidia/micro archive
   unarchive:
     remote_src: yes
-    src: "https://github.com/zyedidia/micro/releases/download/v{{ common_micro_version }}/micro-{{ common_micro_version }}-linux64.tar.gz"
+    src: "https://github.com/zyedidia/micro/releases/download/v{{ common_micro_version }}/micro-{{ common_micro_version }}-linux{% if '64' in ansible_architecture %}64{% else %}32{% endif %}.tar.gz"
     dest: /tmp
     creates: "/tmp/micro-{{ common_micro_version }}"
   when: not common_micro_stat.stat.exists
