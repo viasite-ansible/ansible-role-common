@@ -14,6 +14,7 @@
 
 - name: Copy micro to /usr/local/bin
   copy:
+    remote_src: yes
     src: "/tmp/micro-{{ common_micro_version }}/micro"
     dest: /usr/local/bin/micro
     mode: 0755
