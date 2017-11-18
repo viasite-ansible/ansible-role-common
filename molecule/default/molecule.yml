@@ -3,15 +3,10 @@ driver:
   name: docker
 platforms:
   - name: ansible-role-common-1404
-    image: ubuntu
-    image_version: 14.04
-    volume_mounts:
-      - ${MOLECULE_APTPROXY_PATH}:/etc/apt/apt.conf.d/00aptproxy
+    image: ubuntu:14.04
+
   - name: ansible-role-common-1604
-    image: ubuntu
-    image_version: 16.04
-    volume_mounts:
-      - ${MOLECULE_APTPROXY_PATH}:/etc/apt/apt.conf.d/00aptproxy
+    image: ubuntu:16.04
 
 lint:
   name: yamllint
