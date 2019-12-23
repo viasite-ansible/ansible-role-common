@@ -4,7 +4,7 @@
 - name: Install tzdata
   apt:
     name: tzdata
-    state: installed
+    state: present
 
 - name: Configure tzdata area in debconf
   debconf:
@@ -43,7 +43,7 @@
     path: '/etc/localtime'
     src: '/usr/share/zoneinfo/{{ common_timezone }}'
     state: 'link'
-  when: (ntp__register_etc_timezone|changed and
+  when: (ntp__register_etc_timezone is changed and
          ntp__register_etc_localtime.stat.islnk|bool)
   tags: skip_ansible_lint
 
@@ -55,12 +55,12 @@
         (ansible_local is undefined or
             (ansible_local|d() and ansible_local.timezone|d() and
                 common_timezone != ansible_local.timezone) or
-            (ntp__register_etc_timezone|d() and ntp__register_etc_timezone|changed))
+            (ntp__register_etc_timezone|d() and ntp__register_etc_timezone is changed))
   tags: skip_ansible_lint
 
 - name: Reconfigure tzdata
   shell: dpkg-reconfigure --frontend noninteractive tzdata
-  when: ((ntp__register_debconf_set_area|d() and ntp__register_debconf_set_area|changed) or
-         (ntp__register_debconf_set_zone|d() and ntp__register_debconf_set_zone|changed) or
-         (ntp__register_etc_timezone|d() and ntp__register_etc_timezone|changed))
+  when: ((ntp__register_debconf_set_area|d() and ntp__register_debconf_set_area is changed) or
+         (ntp__register_debconf_set_zone|d() and ntp__register_debconf_set_zone is changed) or
+         (ntp__register_etc_timezone|d() and ntp__register_etc_timezone is changed))
   tags: skip_ansible_lint
