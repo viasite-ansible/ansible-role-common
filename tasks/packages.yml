@@ -29,6 +29,7 @@
 - name: Use python3 by default
   alternatives:
     name: python
+    link: /usr/bin/python
     path: /usr/bin/python3
 
 # https://github.com/nicolargo/glances/issues/1033#issuecomment-279319763
