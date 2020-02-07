@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/viasite-ansible/ansible-role-common.svg?branch=master)](https://travis-ci.org/viasite-ansible/ansible-role-common)
 
-This role should be decoupled to separate roles.
+Tested on Ubuntu 16.04 and 18.04
 
 ## Includes:
 - install base packages

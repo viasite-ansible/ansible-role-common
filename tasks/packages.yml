@@ -26,6 +26,11 @@
   with_items:
     - "{{ common_packages_dev }}"
 
+- name: Use python3 by default
+  alternatives:
+    name: python
+    path: /usr/bin/python3
+
 # https://github.com/nicolargo/glances/issues/1033#issuecomment-279319763
 - name: Upgrade pip and setuptools
   pip:
