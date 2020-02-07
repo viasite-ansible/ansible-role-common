@@ -44,7 +44,8 @@
     src: '/usr/share/zoneinfo/{{ common_timezone }}'
     state: 'link'
   when: (ntp__register_etc_timezone is changed and
-         ntp__register_etc_localtime.stat.islnk|bool)
+         (ntp__register_etc_localtime.stat.islnk is not defined or
+         ntp__register_etc_localtime.stat.islnk|bool))
   tags: skip_ansible_lint
 
 - name: Configure timezone with timedatectl
