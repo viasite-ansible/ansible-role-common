@@ -50,7 +50,7 @@ common_packages_dev:
 common_packages_pip:
   #- fpp # https://github.com/facebook/PathPicker
   - glances # https://github.com/nicolargo/glances
-  - httpie # https://github.com/jkbrzt/httpie
+  - "httpie==1.0.3" # https://github.com/jkbrzt/httpie
   - mycli # https://github.com/dbcli/mycli
   - ps_mem # https://github.com/pixelb/ps_mem
   #- howdoi # requires libxml2-dev libxslt-dev packages
