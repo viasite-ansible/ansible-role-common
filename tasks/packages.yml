@@ -47,5 +47,6 @@
   pip:
     name: "{{ item }}"
     state: present
+    executable: /usr/bin/pip3
   with_items:
     - "{{ common_packages_pip }}"
