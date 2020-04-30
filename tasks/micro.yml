@@ -1,4 +1,5 @@
 ---
+# not used, install from apt
 - name: Check for micro exists
   stat: "path=/usr/local/bin/micro"
   register: common_micro_stat
