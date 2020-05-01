@@ -4,7 +4,7 @@ Tested on Ubuntu 16.04, 18.04, 20.04
 
 ## Includes:
 - install base packages
-- install pip
+- install pip and pip packages
 - ntp
 - timezone
 
