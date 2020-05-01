@@ -1,8 +1,9 @@
 ---
 - include: packages.yml
   tags: [ common, install, packages ]
-#- include: micro.yml
-#  tags: [ common, install, packages, micro ]
+- include: micro.yml
+  when: ansible_distribution_version is version_compare('20.04', '<')
+  tags: [ common, install, packages, micro ]
 - include: editor.yml
   tags: [ common, editor ]
 - include: timezone.yml

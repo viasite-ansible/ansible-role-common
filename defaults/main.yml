@@ -6,12 +6,13 @@ ntp_config_server:
   - 3.pool.ntp.org'
 common_timezone: 'Asia/Yekaterinburg'
 common_default_editor: mcedit
-# common_micro_version: 2.5.0
+common_micro_version: 2.0.3
 common_packages:
+  - "{{ 'fd-find' if ansible_distribution_version is version_compare('20.04', '>=') else 'curl' }}"  # fd-find for ubuntu 20.04
+  - "{{ 'micro' if ansible_distribution_version is version_compare('20.04', '>=') else 'curl' }}"
   - apt-transport-https
   - curl
   - ccze
-  - fd-find
   - git
   - grc
   - htop
@@ -22,7 +23,6 @@ common_packages:
   - less
   - lnav
   - mc
-  - micro
   - mtr
   - ncdu
   - nmap

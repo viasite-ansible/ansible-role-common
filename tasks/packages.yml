@@ -1,10 +1,4 @@
 ---
-# need for pass 'Install common packages'
-- name: Ensure aptitude installed
-  apt:
-    name: aptitude
-    state: present
-
 - name: Update apt cache
   apt:
     update_cache: yes
@@ -12,19 +6,21 @@
   register: apt_cache
   tags: [ common, packages, upgrade ]
 
+# need for pass 'Install common packages'
+- name: Ensure aptitude installed
+  apt:
+    name: aptitude
+    state: present
+
 - name: Install common packages
   apt:
-    name: "{{ item }}"
+    name: "{{ common_packages }}"
     state: present
-  with_items:
-    - "{{ common_packages }}"
 
 - name: Install dev packages
   apt:
-    name: "{{ item }}"
+    name: "{{ common_packages_dev }}"
     state: present
-  with_items:
-    - "{{ common_packages_dev }}"
 
 - name: Use python3 by default
   alternatives:
@@ -35,18 +31,15 @@
 # https://github.com/nicolargo/glances/issues/1033#issuecomment-279319763
 - name: Upgrade pip and setuptools
   pip:
-    name: "{{ item }}"
+    name:
+      - pip
+      - setuptools
     state: latest
     executable: /usr/bin/pip3
-  with_items:
-    - pip
-    - setuptools
   tags: skip_ansible_lint
 
 - name: Install pip packages
   pip:
-    name: "{{ item }}"
+    name: "{{ common_packages_pip }}"
     state: present
     executable: /usr/bin/pip3
-  with_items:
-    - "{{ common_packages_pip }}"
