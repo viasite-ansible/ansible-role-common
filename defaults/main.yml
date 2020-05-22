@@ -36,6 +36,7 @@ common_packages:
   # - tig
   - traceroute
   - tree
+  - trickle
   - tmux
   - unzip
   - vnstat
