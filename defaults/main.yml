@@ -6,7 +6,7 @@ ntp_config_server:
   - 3.pool.ntp.org
 common_timezone: 'Europe/Moscow'
 common_default_editor: mcedit
-common_micro_version: 2.0.3
+common_micro_version: 2.0.10
 common_packages:
   - "{{ 'fd-find' if ansible_distribution_version is version_compare('20.04', '>=') else 'curl' }}"  # fd-find for ubuntu 20.04
   - "{{ 'micro' if ansible_distribution_version is version_compare('20.04', '>=') else 'curl' }}"
@@ -59,8 +59,9 @@ common_packages_dev:
 common_packages_pip:
   # - fpp  # https://github.com/facebook/PathPicker
   - glances  # https://github.com/nicolargo/glances
-  - "httpie==1.0.3"  # https://github.com/jkbrzt/httpie
-  - mycli  # https://github.com/dbcli/mycli
+  # - "httpie==1.0.3"  # https://github.com/jkbrzt/httpie
+  - httpie  # https://github.com/jkbrzt/httpie
+  # - mycli  # https://github.com/dbcli/mycli
   - ps_mem  # https://github.com/pixelb/ps_mem
   # - howdoi  # requires libxml2-dev libxslt-dev packages
   # - watchdog  # watchmedo, https://github.com/gorakhargosh/watchdog
