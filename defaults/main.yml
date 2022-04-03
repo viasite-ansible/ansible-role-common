@@ -3,8 +3,8 @@ ntp_config_server:
   - 0.pool.ntp.org
   - 1.pool.ntp.org
   - 2.pool.ntp.org
-  - 3.pool.ntp.org'
-common_timezone: 'Asia/Yekaterinburg'
+  - 3.pool.ntp.org
+common_timezone: 'Europe/Moscow'
 common_default_editor: mcedit
 common_micro_version: 2.0.3
 common_packages:
