@@ -7,10 +7,10 @@
   tags: [ common, packages, upgrade ]
 
 # need for pass 'Install common packages'
-- name: Ensure aptitude installed
-  apt:
-    name: aptitude
-    state: present
+#- name: Ensure aptitude installed
+#  apt:
+#    name: aptitude
+#    state: present
 
 - name: Install common packages
   apt:
