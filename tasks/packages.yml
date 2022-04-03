@@ -25,8 +25,8 @@
 - name: Use python3 by default
   alternatives:
     name: python
-    link: /usr/bin/python
     path: /usr/bin/python3
+    link: /usr/bin/python
 
 # https://github.com/nicolargo/glances/issues/1033#issuecomment-279319763
 - name: Upgrade pip and setuptools
@@ -35,7 +35,7 @@
       - pip
       - setuptools
     state: latest
-    executable: /usr/bin/pip3
+    # executable: /usr/bin/pip3
   changed_when: false
   tags: skip_ansible_lint
 
@@ -43,4 +43,4 @@
   pip:
     name: "{{ common_packages_pip }}"
     state: present
-    executable: /usr/bin/pip3
+    # executable: /usr/bin/pip3
