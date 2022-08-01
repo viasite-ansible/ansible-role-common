@@ -20,9 +20,11 @@ common_packages:
   - imagemagick
   - iotop
   - iproute2  # iproute for ubuntu 16.04-
+  - jq
   - less
   - lnav
   - mc
+  - moreutils
   - mtr
   - ncdu
   - nmap
