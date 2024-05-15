@@ -1,14 +1,14 @@
 ---
-- include: packages.yml
+- include_tasks: packages.yml
   tags: [ common, install, packages ]
-- include: micro.yml
+- include_tasks: micro.yml
   when: ansible_distribution_version is version_compare('20.04', '<')
   tags: [ common, install, packages, micro ]
-- include: editor.yml
+- include_tasks: editor.yml
   tags: [ common, editor ]
-- include: timezone.yml
+- include_tasks: timezone.yml
   tags: [ common, configure, timezone ]
-- include: ntp.yml
+- include_tasks: ntp.yml
   tags: [ common, ntp ]
-- include: users.yml
+- include_tasks: users.yml
   tags: [ common, users ]

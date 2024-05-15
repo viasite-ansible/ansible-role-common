@@ -38,9 +38,10 @@
     # executable: /usr/bin/pip3
   changed_when: false
   tags: skip_ansible_lint
+  when: ansible_distribution_version is version_compare('24.04', '<') # externally-managed-environment
 
 - name: Install pip packages
   pip:
     name: "{{ common_packages_pip }}"
     state: present
-    # executable: /usr/bin/pip3
+  when: ansible_distribution_version is version_compare('24.04', '<') # externally-managed-environment
