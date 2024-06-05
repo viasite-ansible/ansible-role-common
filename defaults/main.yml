@@ -30,7 +30,7 @@ common_packages:
   - nmap
   - openssh-server
   - pv
-  - reptyr
+  # - reptyr
   - screen
   - silversearcher-ag
   - software-properties-common
